@@ -15,6 +15,8 @@
 		FF38FF5A20C717CD00538F48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF38FF5820C717CD00538F48 /* LaunchScreen.storyboard */; };
 		FF38FF6520C717CD00538F48 /* DistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF38FF6420C717CD00538F48 /* DistanceTests.swift */; };
 		FF38FF7020C717CD00538F48 /* DistanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF38FF6F20C717CD00538F48 /* DistanceUITests.swift */; };
+		FF915D8D20C71D0700C395A4 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF915D8C20C71D0700C395A4 /* HealthKit.framework */; };
+		FFEFB21F20C9D3A500E2B4B9 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEFB21E20C9D3A500E2B4B9 /* Statistics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,9 @@
 		FF38FF6B20C717CD00538F48 /* DistanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DistanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF38FF6F20C717CD00538F48 /* DistanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceUITests.swift; sourceTree = "<group>"; };
 		FF38FF7120C717CD00538F48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF915D8A20C71D0700C395A4 /* Distance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Distance.entitlements; sourceTree = "<group>"; };
+		FF915D8C20C71D0700C395A4 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		FFEFB21E20C9D3A500E2B4B9 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF915D8D20C71D0700C395A4 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +89,7 @@
 				FF38FF6320C717CD00538F48 /* DistanceTests */,
 				FF38FF6E20C717CD00538F48 /* DistanceUITests */,
 				FF38FF4A20C717CD00538F48 /* Products */,
+				FF915D8B20C71D0700C395A4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +106,7 @@
 		FF38FF4B20C717CD00538F48 /* Distance */ = {
 			isa = PBXGroup;
 			children = (
+				FF915D8A20C71D0700C395A4 /* Distance.entitlements */,
 				FF38FF4C20C717CD00538F48 /* AppDelegate.swift */,
 				FF38FF4E20C717CD00538F48 /* ViewController.swift */,
 				FF38FF5020C717CD00538F48 /* Main.storyboard */,
@@ -106,6 +114,7 @@
 				FF38FF5820C717CD00538F48 /* LaunchScreen.storyboard */,
 				FF38FF5B20C717CD00538F48 /* Info.plist */,
 				FF38FF5320C717CD00538F48 /* Distance.xcdatamodeld */,
+				FFEFB21E20C9D3A500E2B4B9 /* Statistics.swift */,
 			);
 			path = Distance;
 			sourceTree = "<group>";
@@ -126,6 +135,14 @@
 				FF38FF7120C717CD00538F48 /* Info.plist */,
 			);
 			path = DistanceUITests;
+			sourceTree = "<group>";
+		};
+		FF915D8B20C71D0700C395A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF915D8C20C71D0700C395A4 /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +214,11 @@
 					FF38FF4820C717CD00538F48 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					FF38FF5F20C717CD00538F48 = {
 						CreatedOnToolsVersion = 9.0;
@@ -264,6 +286,7 @@
 			files = (
 				FF38FF4F20C717CD00538F48 /* ViewController.swift in Sources */,
 				FF38FF5520C717CD00538F48 /* Distance.xcdatamodeld in Sources */,
+				FFEFB21F20C9D3A500E2B4B9 /* Statistics.swift in Sources */,
 				FF38FF4D20C717CD00538F48 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,14 +453,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Distance/Distance.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N42XN66DRL;
 				INFOPLIST_FILE = Distance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.davidmaitland.Distance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -445,14 +470,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Distance/Distance.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N42XN66DRL;
 				INFOPLIST_FILE = Distance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.davidmaitland.Distance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
