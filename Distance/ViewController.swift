@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var UILabelTotal: UILabel!
     
     @IBAction func ButtonRefresh(_ sender: Any) {
-        self.UILabelTotal.text = "0"
         getData(completionHandler: updateView)
     }
     
