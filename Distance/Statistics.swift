@@ -52,21 +52,11 @@ func getData(completionHandler:@escaping (Double?)->()) {
     if HKHealthStore.isHealthDataAvailable() {
         
         setupHealthStore()
-    
-        // Setup date range
-        
-        // ToDo: Get range from params
-    
-        let calendar = Calendar.current
-        let now = Date.init()
-        let start = calendar.date(byAdding: .day, value: -200, to: Date())
         
         let sampleType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceCycling)
-        
-        let predicate = HKQuery.predicateForSamples(withStart: start, end: now, options: .strictStartDate)
-        
+
         let query = HKStatisticsQuery(quantityType: sampleType!,
-                                      quantitySamplePredicate: predicate,
+                                      quantitySamplePredicate: nil,
                                       options: .cumulativeSum) { query, result, error in
                                         
                                         if result != nil {
